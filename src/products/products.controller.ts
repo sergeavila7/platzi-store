@@ -9,9 +9,10 @@ import {
   Delete,
   HttpStatus,
   HttpCode,
-  ParseIntPipe,
 } from '@nestjs/common';
 import { ProductsService } from './products.service';
+import { ParseIntPipe } from '../common/parse-int/parse-int.pipe';
+import { CreateProductDto } from 'src/dtos/products.dtos';
 @Controller('products')
 export class ProductsController {
   constructor(private productsService: ProductsService) {}
@@ -35,7 +36,7 @@ export class ProductsController {
   }
   @Post()
   @HttpCode(HttpStatus.CREATED)
-  create(@Body() payload: any) {
+  create(@Body() payload: CreateProductDto) {
     this.productsService.create(payload);
   }
   @Put(':id')
