@@ -39,10 +39,10 @@ export class ProductsController {
   }
   @Put(':id')
   update(@Param('id') id: number, @Body() payload: any) {
-    return this.productsService.update(id, payload);
+    return this.productsService.update(+id, payload);
   }
   @Delete(':id')
   delete(@Param('id') id: number) {
-    return this.productsService.delete(id);
+    return this.productsService.delete(+id);
   }
 }
