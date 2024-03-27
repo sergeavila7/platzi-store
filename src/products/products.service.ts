@@ -30,16 +30,17 @@ export class ProductsService {
     return newProduct;
   }
 
-  update(payload: any, id: number) {
+  update(id: number, payload: any) {
     const product = this.findOne(id);
-
-    for (const key in payload) {
-      if (key !== 'id') {
-        product[key] = payload[key];
-      }
+    if (product) {
+      const index = this.products.findIndex((item) => item.id === id);
+      this.products[index] = {
+        ...product,
+        ...payload,
+      };
+      return this.products[index];
     }
-
-    return product;
+    return null;
   }
 
   delete(id: number) {
