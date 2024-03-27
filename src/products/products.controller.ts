@@ -21,7 +21,6 @@ export class ProductsController {
     @Query('offset') offset = 0,
     @Query('brand') brand: string,
   ) {
-    // return { message: `products limit=> ${limit} ${offset} ${brand}` };
     return this.productsService.findAll();
   }
   @Get('filter')
@@ -31,16 +30,11 @@ export class ProductsController {
   @Get(':productId')
   @HttpCode(HttpStatus.ACCEPTED)
   getProduct(@Param('productId') productId: string) {
-    // response.status(200).send({ message: `product ${productId}` });
     return this.productsService.findOne(+productId);
   }
   @Post()
   @HttpCode(HttpStatus.CREATED)
   create(@Body() payload: any) {
-    // return {
-    //   message: 'accion de crear',
-    //   payload,
-    // };
     this.productsService.create(payload);
   }
   @Put(':id')
