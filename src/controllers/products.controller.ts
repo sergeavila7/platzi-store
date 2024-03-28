@@ -9,11 +9,9 @@ import {
   Delete,
   HttpStatus,
   HttpCode,
-  Res,
   // ParseIntPipe,
 } from '@nestjs/common';
 
-import { Response } from 'express';
 import { ParseIntPipe } from '../common/parse-int.pipe';
 import { CreateProductDto, UpdateProductDto } from './../dtos/products.dtos';
 
